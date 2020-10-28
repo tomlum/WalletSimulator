@@ -8,7 +8,7 @@ const AboutContainer = styled.div`
   box-sizing: border-box;
   box-sizing: 
   justify-content: space-between;
-  height: 100vh;
+  height: 90vh;
   transition: height 1s;
   background-color: #506496;
   border: solid 7px #1f2537;

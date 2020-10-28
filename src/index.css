@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:wght@900&display=swap');
-
+@import url("https://fonts.googleapis.com/css?family=Roboto:wght@900&display=swap");
 
 body {
   margin: 0;
-  font-family: Roboto,
-    sans-serif;
+  font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ddd;
+  touch-action: manipulation;
+  height: 100%;
+  overflow: hidden;
 }
 
 code {
@@ -22,7 +23,8 @@ button {
 #app {
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
+  height: -webkit-fill-available;
 }
 
 .flex1 {

@@ -85,16 +85,25 @@ const WalletContainer = styled.div`
   position: relative;
   background-color: #4a4655;
   border: solid 7px #292232;
-  border-bottom: none;
   border-radius: 5px;
   flex: 1;
   max-height: 200px;
   padding-top: 30px;
   padding-bottom: 40px;
   margin: 0px 5px;
-  overflow: hidden;
+  overflow: visible;
   margin-bottom: -50px;
   margin-top: 10px;
+`;
+const WalletBackground = styled.div`
+  background-color: red;
+  position: absolute;
+  height: 100vh;
+  left: -7px;
+  right: -7px;
+  background-color: #4a4655;
+  border: solid 7px #292232;
+  border-top: none;
 `;
 const Wallet2Container = styled.div`
   max-height: 200px;
@@ -145,11 +154,16 @@ const QuestionIcon = styled.div`
     align-items: center;
     margin-right: 5px;
   }
-  a{
+  a {
     text-decoration: none;
     color: black;
   }
 `;
+
+function onScroll(event){
+  event.preventDefault();
+}
+window.addEventListener('scroll', onScroll, {capture: true, passive: false})
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -276,6 +290,7 @@ function App() {
           </Droppable>
         </SpendContainer>
         <WalletContainer>
+          {/* <WalletBackground /> */}
           <WalletInstructions displayy={wallet1.length + wallet2.length <= 0}>
             <b>Withdraw dollars from the ATM above</b>
           </WalletInstructions>

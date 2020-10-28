@@ -10,7 +10,7 @@ import styled from "styled-components/macro";
 
 const Layout = styled.div`
   display: flex;
-  height: 100vh;
+  height: 90vh;
   flex-direction: column;
   max-width: 700px;
   margin: auto;
