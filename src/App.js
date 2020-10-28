@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import styled from "styled-components/macro";
 import ConfettiStars from "./ConfettiStars";
@@ -25,6 +25,7 @@ const SpendContainer = styled.div`
 `;
 const Instructions = styled.div`
   padding: 20px;
+  padding-bottom: 0px;
   text-align: center;
   position: absolute;
   display: flex;
@@ -47,9 +48,11 @@ const WalletInstructions = styled(Instructions)`
 `;
 const SpendButton = styled.button`
   position: absolute;
-  right: 30px;
+  right: 0px;
   top: 0px;
   margin: 5px;
+  width: 80px;
+  height: 30px;
   color: ${({ saveStage }) => (saveStage ? "#376634" : "#3e0e0e")};
   border: none;
   border-radius: 4px;
@@ -57,10 +60,17 @@ const SpendButton = styled.button`
     margin: 0px;
     font-size: 20px;
   }
+  background-color: #fff;
+  &:disabled{
+    opacity: 50%
+  }
+
 `;
 const SaveButton = styled.button`
   position: absolute;
-  right: 0px;
+  right: 90px;
+  width: 40px;
+  height: 30px;
   top: 0px;
   margin: 5px;
   color: #3e0e0e;
@@ -89,10 +99,8 @@ const WalletContainer = styled.div`
   flex: 1;
   max-height: 200px;
   padding-top: 30px;
-  padding-bottom: 40px;
   margin: 0px 5px;
-  overflow: visible;
-  margin-bottom: -50px;
+  overflow: hidden;
   margin-top: 10px;
 `;
 const WalletBackground = styled.div`
@@ -106,10 +114,11 @@ const WalletBackground = styled.div`
   border-top: none;
 `;
 const Wallet2Container = styled.div`
+  position: absolute;
+  top: 85px;
   max-height: 200px;
   margin-left: -12px;
   margin-right: 12px;
-  margin-top: -140px;
   div {
     overflow: initial;
   }
@@ -160,10 +169,10 @@ const QuestionIcon = styled.div`
   }
 `;
 
-function onScroll(event){
+function onScroll(event) {
   event.preventDefault();
 }
-window.addEventListener('scroll', onScroll, {capture: true, passive: false})
+window.addEventListener("scroll", onScroll, { capture: true, passive: false });
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -174,6 +183,8 @@ function App() {
   const [stage, setStage] = useState([]);
   const [dissapear, setDissapear] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const wallet1Ref = useRef(undefined);
+  const wallet2Ref = useRef(undefined);
 
   const save = (wallet1, wallet2) => {
     setCookie("WalletSimulator", { wallet1, wallet2 });
@@ -215,6 +226,16 @@ function App() {
     setStage([...stage]);
   };
 
+  const onResize = () => {
+    if (wallet2Ref.current && wallet1Ref.current) {
+      wallet2Ref.current.style.marginTop = `${
+        -wallet1Ref.current.clientHeight / 2
+      }px`;
+    }
+  };
+
+  // window.addEventListener("resize", onResize);
+  // onResize()
   return (
     <>
       <div>
@@ -265,7 +286,7 @@ function App() {
             saveStage={saveStage}
             onClick={() => setSaveStage(!saveStage)}
           >
-            <h1>{`>`}</h1>
+            <h1>{`<`}</h1>
           </SaveButton>
           <Droppable
             className="h100p"
@@ -289,7 +310,7 @@ function App() {
             )}
           </Droppable>
         </SpendContainer>
-        <WalletContainer>
+        <WalletContainer ref={wallet1Ref}>
           {/* <WalletBackground /> */}
           <WalletInstructions displayy={wallet1.length + wallet2.length <= 0}>
             <b>Withdraw dollars from the ATM above</b>
@@ -305,7 +326,7 @@ function App() {
               </WalletZone>
             )}
           </Droppable>
-          <Wallet2Container>
+          <Wallet2Container ref={wallet2Ref}>
             <Droppable droppableId="wallet2" direction="horizontal">
               {(provided, snapshot) => (
                 <WalletZone

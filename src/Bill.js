@@ -30,7 +30,7 @@ const BillCover = styled.div`
       width: fit-content;
     }
     padding: 5px;
-    height: 174px;
+    height: 100%;
     color: #1b3d1b;
     border: solid 4px #1b3d1b;
     background-color: #8fa07c;

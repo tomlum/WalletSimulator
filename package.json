@@ -22,7 +22,8 @@
     "build": "react-scripts build && cp CNAME ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build -t true"
+    "deploy": "gh-pages -d build -t true",
+    "bd": "react-scripts build && cp CNAME ./build && gh-pages -d build -t true"
   },
   "eslintConfig": {
     "extends": "react-app"
