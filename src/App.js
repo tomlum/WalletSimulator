@@ -37,7 +37,7 @@ const Instructions = styled.div`
   bottom: 0;
   left: 0;
   opacity: ${({ displayy }) => (displayy ? 1 : 0)};
-  transition: opacity 0.2s;
+  transition: opacity 0.5s;
 `;
 const StageInstructions = styled(Instructions)`
   color: ${({ saveStage }) => (saveStage ? "#d4e8d7" : "#b47f92")};
@@ -53,7 +53,6 @@ const SpendButton = styled.button`
   margin: 5px;
   width: 80px;
   height: 30px;
-  color: ${({ saveStage }) => (saveStage ? "#376634" : "#3e0e0e")};
   border: none;
   border-radius: 4px;
   h1 {
@@ -62,8 +61,12 @@ const SpendButton = styled.button`
   }
   background-color: #fff;
   &:disabled{
-    opacity: 50%
+    background-color: ${({ saveStage }) => (saveStage ? "#b4dcb2" : "#c095a4")};
+    h1 {
+      color: ${({ saveStage }) => (saveStage ? "#50904d" : "#601d2c")};
+    }
   }
+  transition: all 0.5s;
 
 `;
 const SaveButton = styled.button`

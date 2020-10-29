@@ -57,7 +57,7 @@ const DollarArrowsContainer = styled.div`
 const DollarArrowButtons = styled.button`
   width: 30px;
   height: 30px;
-  border-radius: 5px;
+  border-radius: ${({left}) => left? "8px 0px 0px 8px" : "0px 8px 8px 0px"};
   border: none;
   h1 {
     margin: 0px;
@@ -85,12 +85,13 @@ function DollarArrows({ totalCount, count, setCount, children }) {
         <div className="row flex1"></div>
         <DollarArrowsContainer>
           <DollarArrowButtons
+            left
             disabled={count <= 0}
             onClick={() => {
               setCount(count - 1);
             }}
           >
-            <h1>{`<`}</h1>
+            <h1>{`-`}</h1>
           </DollarArrowButtons>
           <div className="value">{children}</div>
           <DollarArrowButtons
@@ -99,7 +100,7 @@ function DollarArrows({ totalCount, count, setCount, children }) {
               setCount(count + 1);
             }}
           >
-            <h1>{`>`}</h1>
+            <h1>{`+`}</h1>
           </DollarArrowButtons>
         </DollarArrowsContainer>
         <DollarTally>x {count}</DollarTally>
