@@ -48,40 +48,59 @@ const AboutContent = styled.div`
   margin: auto;
 `;
 const TryButton = styled.button`
-  a{
+  background-color: white;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  a {
     color: black;
   }
-`
+`;
+const BackButton = styled.button`
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  font-size: 25px !important;
+  justify-content: center;
+  align-items: center;
+`;
 
 const About = () => {
   return (
     <AboutContainer>
-      <div
-        className="row justify-center"
-        style={{ marginTop: "-10px", marginBottom: "-20px" }}
-      >
-        <a 
-            href="https://www.tomlum.com/"
-            >
-        <img
-          src="https://s3.us-east-2.amazonaws.com/tomlum/logo-white.png"
-          alt="Tom Lum Logo"
-          width="70"
-        />
+      <div className="block center mt-10px mb-10px">
+        <a href="https://www.tomlum.com/">
+          <img
+            src="https://s3.us-east-2.amazonaws.com/tomlum/logo-white.png"
+            alt="Tom Lum Logo"
+            height="70"
+            width="70"
+          />
         </a>
-        
-        <a 
-            href="https://twitter.com/tomlumperson"
-            >
-        <img
-          src="https://s3.us-east-2.amazonaws.com/tomlum/bird-white.png"
-          alt="Twitter"
-          width="70"
-        />
+
+        <a href="https://twitter.com/tomlumperson">
+          <img
+            src="https://s3.us-east-2.amazonaws.com/tomlum/bird-white.png"
+            alt="Twitter"
+            height="70"
+            width="70"
+          />
         </a>
       </div>
 
-      <Link to="/"><h1>Wallet Simulator</h1></Link>
+      <div className="row justify-center align-center">
+        <div className="flex1">
+        <Link to="/" className="flex5 mauto">
+          <BackButton className="flex1">
+            <b>{`<`}</b>
+            </BackButton>
+            </Link>
+        </div>
+        <Link to="/" className="flex5 mauto">
+          <h1>Wallet Simulator</h1>
+        </Link>
+        <div className="flex1"></div>
+      </div>
       <AboutContent>
         <p>
           Study after study have shown that {` `}
@@ -104,11 +123,13 @@ const About = () => {
           you're really about to spend, and how much you've already been
           spending.
         </p>
-        <a href="/">
-          <TryButton>
-            <Link to="/"><b>Try it Now!</b></Link>
-          </TryButton>
-        </a>
+        <TryButton>
+          <a href="/">
+            <Link to="/">
+              <b>Try it Now!</b>
+            </Link>
+          </a>
+        </TryButton>
         <p>
           Wallet simulator doesn't store any of your data, in fact you can use
           it offline or as a{" "}
@@ -117,7 +138,7 @@ const About = () => {
             rel="noopener noreferrer"
             href="https://medium.com/progressivewebapps/how-to-install-a-pwa-to-your-device-68a8d37fadc1"
           >
-            <b>progressive web app</b>
+            <b>progressive web app</b>.
           </a>
         </p>
         <p>
@@ -158,6 +179,7 @@ const About = () => {
           personal finance are a moral failing. Don't put all the blame on
           yourself!
         </p>
+        <br />
       </AboutContent>
     </AboutContainer>
   );

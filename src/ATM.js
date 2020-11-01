@@ -63,6 +63,10 @@ const DollarArrowButtons = styled.button`
     margin: 0px;
     font-size: 20px;
   }
+  background-color: white;
+  &:disabled{
+    background-color: #808eb1;
+  }
 `;
 
 const DollarTally = styled.div`

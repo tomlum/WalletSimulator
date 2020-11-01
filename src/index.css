@@ -23,12 +23,19 @@ button {
 #app {
   display: flex;
   justify-content: center;
-  height: 82vh;
-  height: -webkit-fill-available;
+  height: 85vh;
+}
+
+.mauto {
+  margin: auto;
 }
 
 .flex1 {
   flex: 1;
+}
+
+.flex5 {
+  flex: 5;
 }
 
 .row {
@@ -68,10 +75,26 @@ button {
   margin: 5px 0px;
 }
 
+.mt-10px {
+  margin-top: -10px
+}
+
+.mb-10px {
+  margin-top: -10px
+}
+
 .pointer {
   cursor: pointer;
 }
 
 .h100p {
   height: 100%;
+}
+
+.block{
+  display: block;
+}
+
+.center{
+  text-align: center;
 }
