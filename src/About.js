@@ -88,18 +88,20 @@ const About = () => {
         </a>
       </div>
 
-      <div className="row justify-center align-center">
-        <div className="flex1">
-        <Link to="/" className="flex5 mauto">
-          <BackButton className="flex1">
-            <b>{`<`}</b>
-            </BackButton>
+      <div className="block mt-10px mb-10px">
+        <div className="row justify-center align-center">
+          <div className="flex1">
+            <Link to="/" className="flex5 mauto">
+              <BackButton className="flex1">
+                <b>{`<`}</b>
+              </BackButton>
             </Link>
+          </div>
+          <Link to="/" className="flex5 mauto">
+            <h1>Wallet Simulator</h1>
+          </Link>
+          <div className="flex1"></div>
         </div>
-        <Link to="/" className="flex5 mauto">
-          <h1>Wallet Simulator</h1>
-        </Link>
-        <div className="flex1"></div>
       </div>
       <AboutContent>
         <p>
